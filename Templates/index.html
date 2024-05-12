@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+
+{% block title %}Image Shuttle{% endblock %}
+
+{% block body %}
+    <div class="posts">
+        {% for post in posts %}
+            <a href="{% url 'feed:detail' post.id %}">
+                <h3>{{ post.text }}</h3>
+                {% thumbnail post.image "300x300" crop="center" as im %}
+                    <img src="{{ im.url }}" width="{{ im.witdth}}" height="{{ im.height }}" />
+                {% endthumbnail %}
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+
+{% block title %}Details{% endblock %}
+
+{% block body %}
+    <div class="posts">
+        <h3>{{ object.text }}</h3>
+        {% thumbnail object.image "300x300" crop="center" as im %}
+            <img src="{{ im.url }}" width="{{ im.witdth}}" height="{{ im.height }}" />
+        {% endthumbnail %}
+    </div>
+{% endblock %}
